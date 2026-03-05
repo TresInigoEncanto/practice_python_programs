@@ -8,7 +8,7 @@ CALCULATOR_WINDOW.config(background='orange')
 ICON = PhotoImage(file='C:\\Users\\azale\\Desktop\\python_projects\\ball_icon.png')
 CALCULATOR_WINDOW.iconphoto(True, ICON)
 
-LABEL = Label(CALCULATOR_WINDOW, 
+header = Label(CALCULATOR_WINDOW, 
               text='Basketball Gamescore Calculator', 
               font=('Comic Sans MS', 40, 'bold'),
               foreground='black',
@@ -16,6 +16,11 @@ LABEL = Label(CALCULATOR_WINDOW,
               relief=RAISED,
               border=10,
               padx=5)
-LABEL.pack()
+header.pack()
+
+calculate_button = Button(CALCULATOR_WINDOW, text='Calculate Gamescore')
+calculate_button.config(font=('Arial', 25, 'bold'))
+calculate_button.config(activebackground='blue')
+calculate_button.pack()
 
 CALCULATOR_WINDOW.mainloop()
