@@ -1,9 +1,14 @@
 from tkinter import *
 
-WINDOW = Tk()
-WINDOW.geometry("420x420")
-WINDOW.title("Basketball Gamescore Calculator")
+CALCULATOR_WINDOW = Tk()
+CALCULATOR_WINDOW.title('Basketball Gamescore Calculator')
 
-WINDOW.config(background='orange')
+CALCULATOR_WINDOW.config(background='orange')
 
-WINDOW.mainloop()
+ICON = PhotoImage(file='C:\\Users\\azale\\Desktop\\python_projects\\ball_icon.png')
+CALCULATOR_WINDOW.iconphoto(True, ICON)
+
+LABEL = Label(CALCULATOR_WINDOW, text='Basketball Gamescore Calculator', font=('Comic Sans MS', 40, 'bold'))
+LABEL.pack()
+
+CALCULATOR_WINDOW.mainloop()
