@@ -1,6 +1,22 @@
 from tkinter import *
 from tkinter import messagebox
 
+CALCULATOR_WINDOW = Tk()
+CALCULATOR_WINDOW.title("Basketball Gamescore Calculator")
+
+CALCULATOR_WINDOW.config(background='orange')
+
+stat_lines = [
+    ("Points Scored", 'point'), ("Field Goals Made", 'field goal'), 
+    ("Field Goal Attempts", 'field goal attempt'), ("Freethrows Made", 'freethrow'), 
+    ("Freethrow Attempts", 'freethrow attempt'), ("Offensive Rebounds", 'offensive rebound'), 
+    ("Defensive Rebounds", 'defensive rebound'), ("Steals", 'steal'), 
+    ("Assists", 'assist'), ("Blocks", 'block'), 
+    ("Personal Fouls", 'foul'), ("Turnovers", 'turnover')
+]
+
+entries = {}
+
 def calculate_game_score():
     try:
         player_data = {stat_name: float(widget.get()) for stat_name, widget in entries.items()}
@@ -19,16 +35,10 @@ def calculate_game_score():
             - player_data['turnover']
         )
 
+        messagebox.showinfo("Result", f"The Player's Game Score is: {game_score:.2f}")
+
     except ValueError:
         messagebox.showerror("Input Error!", "Please enter valid numbers in all fields.")
-
-CALCULATOR_WINDOW = Tk()
-CALCULATOR_WINDOW.title("Basketball Gamescore Calculator")
-
-CALCULATOR_WINDOW.config(background='orange')
-
-ICON = PhotoImage(file='C:\\Users\\azale\\Desktop\\python_projects\\ball_icon.png')
-CALCULATOR_WINDOW.iconphoto(True, ICON)
 
 header = Label(CALCULATOR_WINDOW, 
               text="Basketball Gamescore Calculator", 
@@ -40,20 +50,25 @@ header = Label(CALCULATOR_WINDOW,
               padx=5)
 header.pack()
 
-stat_lines = [
-    ("Points Scored", 'point'), ("Field Goals Made", 'field goal'), 
-    ("Field Goal Attempts", 'field goal attempt'), ("Freethrows Made", 'freethrow'), 
-    ("Freethrow Attempts", 'freethrow attempt'), ("Offensive Rebounds", 'offensive rebound'), 
-    ("Defensive Rebounds", 'defensive rebound'), ("Steals", 'steal'), 
-    ("Assists", 'assist'), ("Blocks", 'block'), 
-    ("Personal Fouls", 'foul'), ("Turnovers", 'turnover')
-]
-
-entries = {}
+for label_text, key in stat_lines:
+    row = Frame(CALCULATOR_WINDOW, bg='orange')
+    row.pack(fill=X, padx=20, pady=2)
+    
+    lbl = Label(row, text=label_text, width=20, anchor='w', bg='orange', font=('Arial', 12))
+    lbl.pack(side=LEFT)
+    
+    ent = Entry(row)
+    ent.pack(side=RIGHT, expand=YES, fill=X)
+    
+    entries[key] = ent
 
 calculate_button = Button(CALCULATOR_WINDOW, text="Calculate Gamescore")
 calculate_button.config(font=('Arial', 25, 'bold'))
 calculate_button.config(activebackground='blue')
-calculate_button.pack()
+calculate_button.config(command=calculate_game_score)
+calculate_button.pack(pady=20)
+
+ICON = PhotoImage(file='C:\\Users\\azale\\Desktop\\python_projects\\ball_icon.png')
+CALCULATOR_WINDOW.iconphoto(True, ICON)
 
 CALCULATOR_WINDOW.mainloop()
