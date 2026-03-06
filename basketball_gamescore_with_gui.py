@@ -50,22 +50,49 @@ header = Label(CALCULATOR_WINDOW,
               padx=5)
 header.pack()
 
+header.pack(pady=10)
+
+# 1. CREATE A MAIN CONTAINER FOR THE BODY
+body_frame = Frame(CALCULATOR_WINDOW, bg='orange')
+body_frame.pack(fill=BOTH, expand=True, padx=20)
+
+# 2. CREATE THE LEFT COLUMN (For Stats)
+left_column = Frame(body_frame, bg='orange')
+left_column.pack(side=LEFT, fill=Y, padx=10)
+
 for label_text, key in stat_lines:
-    row = Frame(CALCULATOR_WINDOW, bg='orange')
-    row.pack(fill=X, padx=20, pady=2)
+    row = Frame(left_column, bg='orange')
+    row.pack(fill=X, pady=2)
     
-    lbl = Label(row, text=label_text, width=20, anchor='w', bg='orange', font=('Arial', 12))
+    lbl = Label(row, text=label_text, width=20, anchor='w', bg='orange', font=('Arial', 12, 'bold'))
     lbl.pack(side=LEFT)
     
     ent = Entry(row)
-    ent.pack(side=RIGHT, expand=YES, fill=X)
-    
+    ent.pack(side=LEFT, padx=5)
     entries[key] = ent
 
-calculate_button = Button(CALCULATOR_WINDOW, text="Calculate Gamescore")
-calculate_button.config(font=('Arial', 25, 'bold'))
-calculate_button.config(activebackground='blue')
-calculate_button.config(command=calculate_game_score)
+# 3. CREATE THE RIGHT COLUMN (For the Paragraph)
+right_column = Frame(body_frame, bg='white', relief=SUNKEN, border=2)
+right_column.pack(side=RIGHT, fill=BOTH, expand=True, padx=10, pady=10)
+
+info_text = (
+    "ABOUT GAME SCORE\n\n"
+    "Game Score was created by John Hollinger to give a rough measure "
+    "of a player's productivity for a single game.\n\n"
+    "A score of 10 is considered average, while a score of 40+ is "
+    "considered an all-time great performance.\n\n"
+    "Instructions:\n"
+    "Enter the box score stats on the left and click 'Calculate' to "
+    "see the final efficiency rating."
+)
+
+info_label = Label(right_column, text=info_text, font=('Arial', 11), 
+                   wraplength=300, justify=LEFT, bg='white', padx=15, pady=15)
+info_label.pack()
+
+# 4. BUTTON AT THE BOTTOM
+calculate_button = Button(CALCULATOR_WINDOW, text="Calculate Gamescore", command=calculate_game_score)
+calculate_button.config(font=('Arial', 20, 'bold'), activebackground='blue')
 calculate_button.pack(pady=20)
 
 ICON = PhotoImage(file='C:\\Users\\azale\\Desktop\\python_projects\\ball_icon.png')
