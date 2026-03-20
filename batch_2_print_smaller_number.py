@@ -1,0 +1,7 @@
+first_number = float(input("Enter your first number: "))
+second_number = float(input("Enter your second number: "))
+
+if first_number > second_number:
+    print(f"The second number is smaller = {second_number:.2f}")
+else:
+    print(f"The first number is smaller = {first_number:.2f}")
