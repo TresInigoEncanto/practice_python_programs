@@ -1,6 +1,15 @@
+entered_numbers = set()
+
 while True:
     try:
-        numbers = float(input("Enter a number: "))
+        number_entered = float(input("Enter a number: "))
+
+        if number_entered in entered_numbers:
+            print(number_entered, "is Duplicate")
+        else:
+             print(number_entered, "is Unique")
+             entered_numbers.add(number_entered)
+
     except ValueError:
-        print("Invalid input entered")
+        print("Invalid input, stopping loop")
         break
