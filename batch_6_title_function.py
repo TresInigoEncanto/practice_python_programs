@@ -15,3 +15,14 @@ else:
         else:
             first_char = word[0]
             remaining_char = word[1:]
+
+            word_upper = first_char.upper()
+            word_lower = remaining_char.lower()
+
+            final_string = word_upper + word_lower
+
+            words_checked.append(final_string)
+
+result = " ".join(words_checked)
+
+print(result)
