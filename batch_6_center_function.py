@@ -17,3 +17,9 @@ if total_padding <= 0:
 else:
     left_padding_count = total_padding // 2
     right_padding_count = total_padding - left_padding_count
+
+    left_side_padding = fill_char * left_padding_count
+    right_side_padding = fill_char * right_padding_count
+    centered_text = left_side_padding + user_input + right_side_padding
+
+print(centered_text)
