@@ -13,3 +13,7 @@ else:
 
     for i in range(start_search, -1, -1):
         current_slice = user_input[i: i + sub_len]
+
+        if current_slice == string_search:
+            found_index = i
+            break
