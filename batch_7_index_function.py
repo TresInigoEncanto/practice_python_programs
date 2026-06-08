@@ -15,3 +15,8 @@ else:
         if current_slice == string_search:
             found_index = i
             break
+
+if found_index != 1:
+    print(f"Found at index: {found_index}")
+else:
+    raise ValueError("Substring not found")
