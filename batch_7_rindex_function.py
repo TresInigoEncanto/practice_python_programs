@@ -5,3 +5,8 @@ input_len = len(user_input)
 sub_len = len(string_search)
 
 found_index = -1
+
+if sub_len == 0:
+    found_index = input_len
+else:
+    start_search = input_len - sub_len
