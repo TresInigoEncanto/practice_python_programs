@@ -10,3 +10,7 @@ for char in user_input:
 
     elif 'a' <= char <= 'z':
         has_lowercase = True
+
+final_text = has_lowercase and is_all_lowercase
+
+print(final_text)
