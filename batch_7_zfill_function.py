@@ -18,3 +18,10 @@ if desired_width > current_len:
     zeros = ""
     for i in range(padding_needed):
         zeros += "0"
+
+    final_text = sign + zeros + clean_text
+
+else:
+    final_text = user_input
+
+print(final_text)
