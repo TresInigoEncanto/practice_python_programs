@@ -6,3 +6,8 @@ current_len = len(user_input)
 
 sign = ""
 clean_text = user_input
+
+if current_len > 0:
+    if user_input[0] == "-" or user_input == "+":
+        sign = user_input[0]
+        clean_text = user_input[1:]
