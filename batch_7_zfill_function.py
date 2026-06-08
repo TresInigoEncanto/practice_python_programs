@@ -11,3 +11,10 @@ if current_len > 0:
     if user_input[0] == "-" or user_input == "+":
         sign = user_input[0]
         clean_text = user_input[1:]
+
+if desired_width > current_len:
+    padding_needed = desired_width - current_len
+
+    zeros = ""
+    for i in range(padding_needed):
+        zeros += "0"
